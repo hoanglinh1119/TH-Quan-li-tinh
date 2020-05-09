@@ -71,6 +71,8 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
     }
+
+
     @Bean
     @Qualifier(value = "entityManager")
     public EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
@@ -112,10 +114,14 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
     }
+
+
+
     @Bean
     public ProvinceService provinceService(){
         return new ProvinceServiceImpl();
     }
+
     @Bean
     public CustomerService customerService(){
         return new CustomerServiceImpl();

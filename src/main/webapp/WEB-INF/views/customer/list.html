@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<a href="/customers-sort">Sort</a>
 <a href="/create-customer">Create new customer</a>
 <h1>Customers</h1>
 <table border="1">
@@ -27,5 +28,13 @@
         </tr>
     </th:block>
 </table>
+<div>
+<a th:href="@{'/customers'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
+    <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}" th:value="${customers.number + 1}"></span>
+
+<!--    <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}" th:value="${customers.number + 1}"></span>-->
+<a th:href="@{'/customers'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
+</div>
+
 </body>
 </html>

@@ -4,13 +4,15 @@ import com.hoanglinh.model.Customer;
 import com.hoanglinh.repository.CustomerRepository;
 import com.hoanglinh.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
     @Override
-    public Iterable<Customer> findAll() {
-        return customerRepository.findAll();
+    public Page<Customer> findAll(Pageable pageable) {
+        return customerRepository.findAll(pageable);
     }
 
     @Override
@@ -27,5 +29,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void delete(Long id) {
         customerRepository.delete(id);
+    }
+
+    @Override
+    public Page<Customer> findAllByOrderByNameDesc(Pageable p) {
+        return customerRepository.findAllByOrderByNameDesc(p);
     }
 }

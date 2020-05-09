@@ -6,6 +6,9 @@ import com.hoanglinh.model.Province;
 import com.hoanglinh.service.CustomerService;
 import com.hoanglinh.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,8 +29,8 @@ public class CustomerController {
         return provinceService.findAll();
     }
     @GetMapping("/customers")
-    public ModelAndView listCustomers(){
-        Iterable<Customer> customers = customerService.findAll();
+    public ModelAndView listCustomers( @PageableDefault(size = 3) Pageable pageable){
+        Page<Customer> customers= customerService.findAll( pageable);
         ModelAndView modelAndView = new ModelAndView("/customer/list");
         modelAndView.addObject("customers", customers);
         return modelAndView;
@@ -39,6 +42,14 @@ public class CustomerController {
         modelAndView.addObject("customer", new Customer());
         return modelAndView;
     }
+    @GetMapping("/customers-sort")
+    public ModelAndView sortList( @PageableDefault(size = 3) Pageable pageable){
+        Page<Customer> customers=customerService.findAllByOrderByNameDesc(pageable);
+        ModelAndView modelAndView=new ModelAndView("/customer/list");
+        modelAndView.addObject("customers",customers);
+        return modelAndView;
+    }
+
 
     @PostMapping("/create-customer")
     public ModelAndView saveCustomer(@ModelAttribute("customer") Customer customer){
