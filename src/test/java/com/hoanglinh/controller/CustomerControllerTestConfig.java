@@ -1,6 +1,8 @@
 package com.hoanglinh.controller;
 
 
+import com.hoanglinh.repository.CustomerRepository;
+import com.hoanglinh.repository.ProvinceRepository;
 import com.hoanglinh.service.CustomerService;
 import com.hoanglinh.service.ProvinceService;
 import com.hoanglinh.service.impl.CustomerServiceImpl;
@@ -18,9 +20,17 @@ import javax.sql.DataSource;
 @ComponentScan("com.hoanglinh.controllers")
 public class CustomerControllerTestConfig {
     @Bean
+    public CustomerRepository customerRepository(){
+        return Mockito.mock(CustomerRepository.class);
+    }
+    @Bean
     public CustomerService customerService(){
         return Mockito.mock(CustomerServiceImpl.class);
 
+    }
+    @Bean
+    public ProvinceRepository provinceRepository() {
+        return Mockito.mock(ProvinceRepository.class);
     }
     @Bean
     public ProvinceService provinceService() {

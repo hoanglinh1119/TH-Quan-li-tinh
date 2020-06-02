@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.hoanglinh.service.CustomerServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-06-01T12:56:58" hostname="ADMIN" time="0.043">
+<testsuite name="com.hoanglinh.service.CustomerServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-06-02T02:45:41" hostname="ADMIN" time="0.021">
   <properties/>
-  <testcase name="testFindOneNotFound()" classname="com.hoanglinh.service.CustomerServiceTest" time="0.03"/>
-  <testcase name="testFindAll()" classname="com.hoanglinh.service.CustomerServiceTest" time="0.006"/>
+  <testcase name="testFindOneNotFound()" classname="com.hoanglinh.service.CustomerServiceTest" time="0.011"/>
+  <testcase name="testFindAll()" classname="com.hoanglinh.service.CustomerServiceTest" time="0.005"/>
   <testcase name="saveCustomer()" classname="com.hoanglinh.service.CustomerServiceTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
